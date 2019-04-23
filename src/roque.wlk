@@ -15,10 +15,7 @@ object roque {
 
 	
 	method alimentar(ave){
-		if (mochila == null) {
-			//no hace nada
-		}
-		else{
+		if (mochila != null) {
 			ave.come(mochila)
 			self.soltar(mochila)
 			mochila = null
