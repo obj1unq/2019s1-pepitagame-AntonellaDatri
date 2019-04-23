@@ -29,8 +29,8 @@ object pepita {
 		}
 	}
 	method volaYCome(comida){
-		self.move(comida.position())
 		game.removeVisual(comida)
+		self.move(comida.position())
 		self.come(comida)
 	}
 	
