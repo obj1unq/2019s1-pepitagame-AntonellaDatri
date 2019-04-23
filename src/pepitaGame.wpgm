@@ -23,6 +23,7 @@ program PepitaGame {
 // COLISIONES
 	game.whenCollideDo(alpiste, {entrenador => entrenador.tomarComida(alpiste)})
 	game.whenCollideDo(manzana, {entrenador => entrenador.tomarComida(manzana)})
+	game.whenCollideDo(pepita, {entrenador => entrenador.alimentar(pepita)})
 
 //	TECLADO
 	keyboard.h().onPressDo { game.say(pepita, "Hola chiques!") }
