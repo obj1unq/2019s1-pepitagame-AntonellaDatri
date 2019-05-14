@@ -5,6 +5,9 @@ object villaGesell {
 	method position() = game.at(8,3)
 	
 	method nombre() = "Villa Gesell"
+	method teEncontroRoque(){}
+	method teEncontroPepita(){}
+	
 }
 
 object buenosAires {
@@ -12,4 +15,7 @@ object buenosAires {
 	method position() = game.at(1,1)
 	
 	method nombre() = "Buenos Aires"
+	method teEncontroRoque(){}
+	method teEncontroPepita(){}
+	
 }

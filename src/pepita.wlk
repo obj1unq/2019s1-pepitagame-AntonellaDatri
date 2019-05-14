@@ -16,6 +16,7 @@ object pepita {
 
 	method come(comida) {
 		energia = energia + comida.energia()
+		game.removeVisual(comida)
 	}
 	
 	
@@ -52,4 +53,7 @@ object pepita {
 	method calcularEnergiaDeVuelo(nuevaPosicion){
 		return self.energiaParaVolar(position.distance(nuevaPosicion))
 	}	
+	method teEncontroRoque(){
+		game.say(self, "Hola, Roque")
+	}
 }
