@@ -2,6 +2,7 @@ import pepita.*
 import ciudades.*
 import comidas.*
 import wollok.game.*
+import roque.*
 
 program PepitaGame {
 	
@@ -12,22 +13,41 @@ program PepitaGame {
 	game.ground("suelo.png")
 
 //	VISUALES
-	game.addVisualIn(alpiste, game.at(5,5))
-	game.addVisualIn(manzana, game.at(5,1))
+	game.addVisual(new Alpiste())
+	game.addVisual(new Manzana())
 	game.addVisual(buenosAires)
 	game.addVisual(villaGesell)
 	game.addVisual(pepita)
+	game.addVisual(roque)
+	
+// COLISIONES
+	//game.whenCollideDo(alpiste, {entrenador => entrenador.tomarComida(alpiste)})
+	//game.whenCollideDo(manzana, {entrenador => entrenador.tomarComida(manzana)})
+	game.whenCollideDo(roque, {cosa => cosa.teEncontroRoque()})
+	game.whenCollideDo(pepita, {cosa => cosa.teEncontroPepita()})
+	//game.whenCollideDo(alpiste, {ave => ave.come(alpiste)})
+	//game.whenCollideDo(manzana, {ave => ave.come(manzana)})
+	
 
 //	TECLADO
 	keyboard.h().onPressDo { game.say(pepita, "Hola chiques!") }
 
 	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }
 	keyboard.b().onPressDo { pepita.volaHacia(buenosAires) }
-
-	keyboard.up().onPressDo { pepita.move(pepita.position().up(1)) }
-	keyboard.down().onPressDo { pepita.move(pepita.position().down(1)) }
-	keyboard.left().onPressDo { pepita.move(pepita.position().left(1)) }
-	keyboard.right().onPressDo { pepita.move(pepita.position().right(1)) }
+	//keyboard.m().onPressDo {pepita.volaYCome(manzana)}
+	//keyboard.a().onPressDo {pepita.volaYCome(alpiste)}
+	keyboard.w().onPressDo { pepita.move(pepita.position().up(1)) }
+	keyboard.s().onPressDo { pepita.move(pepita.position().down(1)) }
+	keyboard.a().onPressDo { pepita.move(pepita.position().left(1)) }
+	keyboard.d().onPressDo { pepita.move(pepita.position().right(1)) }
+	
+	keyboard.up().onPressDo { roque.move(roque.position().up(1)) }
+	keyboard.down().onPressDo { roque.move(roque.position().down(1)) }
+	keyboard.left().onPressDo { roque.move(roque.position().left(1)) }
+	keyboard.right().onPressDo { roque.move(roque.position().right(1)) }
+	keyboard.l().onPressDo {roque.soltar(new Alpiste())}
+	keyboard.m().onPressDo { game.addVisualIn(new Manzana(), roque.position()) }
+	
 		
 //	START
 	game.start()
